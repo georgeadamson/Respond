@@ -310,18 +310,14 @@ window.matchMedia = window.matchMedia || (function( doc, undefined ) {
 			req.send( null );
 		},
 		//define ajax obj 
-		xmlHttp = (function() {
-			var xmlhttpmethod = false;	
+		xmlHttp = function() {
 			try {
-				xmlhttpmethod = new win.XMLHttpRequest();
+				return new win.XMLHttpRequest();
 			}
 			catch( e ){
-				xmlhttpmethod = new win.ActiveXObject( "Microsoft.XMLHTTP" );
+				return win.ActiveXObject( "Microsoft.XMLHTTP" );
 			}
-			return function(){
-				return xmlhttpmethod;
-			};
-		})();
+		};
 	
 	//translate CSS
 	ripCSS();
